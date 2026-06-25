@@ -1,0 +1,81 @@
+@import "tailwindcss";
+
+@theme {
+  /* Neutral concrete ramp */
+  --color-ink-950: #0e0f11;
+  --color-ink-900: #16181b;
+  --color-ink-800: #1e2126;
+  --color-ink-700: #2a2e34;
+  --color-ink-600: #3a4048;
+  --color-ink-400: #6b7280;
+  --color-ink-300: #9ca3af;
+  --color-ink-100: #e6e8eb;
+  --color-ink-050: #f4f5f7;
+
+  /* Hazard amber accent */
+  --color-acc-500: #f4a92c;
+  --color-acc-600: #d98e12;
+  --color-acc-300: #f8c46b;
+  --color-acc-tint: rgba(244, 169, 44, 0.14);
+
+  /* Semantic */
+  --color-success: #3fb67a;
+  --color-error: #e5564b;
+
+  /* Fonts */
+  --font-display: "Archivo", "Anton", system-ui, sans-serif;
+  --font-ui: "Inter", system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+
+  /* Radius */
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  background-color: var(--color-ink-950);
+  color: var(--color-ink-100);
+  font-family: var(--font-ui);
+}
+
+/* The app shell owns its own height (100dvh) and scrolls internal regions, so
+   the document itself must never scroll. Pinning html/body here removes the
+   stray page-level scrollbar that otherwise stacks beside the rail's, and
+   overflow-x guards against any sub-pixel horizontal bleed. */
+html,
+body {
+  overflow: hidden;
+  overscroll-behavior: none;
+}
+
+html {
+  overflow-x: hidden;
+}
+
+/* Focus ring: universal, never outline:none without replacement */
+:focus-visible {
+  outline: 2px solid var(--color-acc-500);
+  outline-offset: 2px;
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
